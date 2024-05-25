@@ -12,3 +12,5 @@ Route::get('/', function () {
 
 Route::webhooks('webhook-receiving-url');
 Route::stripeWebhooks('stripe-webhook');
+
+Route::post('test',[paymentController::class,'test']);
