@@ -11,6 +11,7 @@ class Test extends Model
     protected $primaryKey ='id';
       protected $fillable =[
             'test',
+            'payload'
             
       ];
     use HasFactory;
