@@ -5,6 +5,7 @@ use App\Http\Controllers\WebhooksController;
 use Svix\Webhook;
 use Svix\Exception\WebhookVerificationException;
 use Illuminate\Http\Request;
+use App\Http\Controllers\paymentController;
 
 Route::get('/', function () {
     return view('welcome');
