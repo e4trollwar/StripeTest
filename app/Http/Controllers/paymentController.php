@@ -14,11 +14,12 @@ class paymentController extends Controller
         $header_signature = $request->header('Paymongo-Signature');
         $payload= $request->getContent();
         
-        $computedSignature = hash_hmac('sha256', $payload, $signingSecret);
+        $computedSignature = base64_encode(hash_hmac('sha256', $payload, $signingSecret));
 
 
         $signature = hash_equals($header_signature, $computedSignature);
-        if($computedSignature == $signature){
+        
+        if($computedSignature === $header_signature){
             WebhookCall::insert([
               'payload' =>$payload,
             ]);
