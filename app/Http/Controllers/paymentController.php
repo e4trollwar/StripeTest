@@ -13,7 +13,7 @@ class paymentController extends Controller
 
 
 
-        $signingSecret = 'sk_test_UVzt5mdJkYWRZxK1C7YimXaV';
+        $signingSecret = env('PAYMONGO_SECRET');
         $header_signature = $request->header('Paymongo-Signature');
 
 
@@ -30,7 +30,7 @@ class paymentController extends Controller
             ]);
         }else{
             WebhookCall::insert([
-              'payload' =>$request->header(),
+              'payload' =>'invalid',
             ]);
         }
         
