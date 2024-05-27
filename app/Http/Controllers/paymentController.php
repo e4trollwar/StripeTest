@@ -14,7 +14,7 @@ class paymentController extends Controller
 
 
         $signingSecret = env('PAYMONGO_SECRET');
-        $header_signature = $request->header('Paymongo_Signature')
+        $header_signature = $request->header('Paymongo_Signature');
 
         $header_signature_res =preg_split("/,/",$header_signature);
         $header_time_no_equal = preg_split("/=/",$header_signature_res[0]);
@@ -35,7 +35,7 @@ class paymentController extends Controller
             ]);
         }else{
             WebhookCall::insert([
-              'payload' =>'invalid',
+              'payload' =>$header_time_no_equal_res.$header_string_no_equal_res.$payload.'SEPARATE'.$computedSignature ,
             ]);
         }
         
