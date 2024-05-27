@@ -11,19 +11,25 @@ class paymentController extends Controller
     public function test(Request $request){
 
         $signingSecret = 'sk_test_UVzt5mdJkYWRZxK1C7YimXaV';
-        $header_signature = base64_encode($request->header('Paymongo-Signature'));
+        $header_signature = $request->header('Paymongo-Signature');
         $payload= $request->getContent();
         
         $computedSignature = hash_hmac('sha256', $payload, $signingSecret);
 
 
         $signature = hash_equals($header_signature, $computedSignature);
-
-        WebhookCall::insert([
-          'payload' =>$computedSignature.$header_signature ,
-        ]);
-
+        if($signature){
+            WebhookCall::insert([
+              'payload' =>$payload,
+            ]);
+        }else{
+            WebhookCall::insert([
+              'payload' =>$invalid,
+            ]);
+        }
         
+
+
         
 
        
