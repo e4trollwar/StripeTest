@@ -19,16 +19,9 @@ class paymentController extends Controller
 
         $signature = hash_equals($header_signature, $computedSignature);
 
-        if($computedSignature === $header_signature){
-            WebhookCall::insert([
-              'payload' =>$payload,
-            ]);
-        }else{
-            WebhookCall::insert([
-              'payload' =>'invalid',
-            ]);
-        }
-        
+        WebhookCall::insert([
+          'payload' =>$computedSignature.$header_signature ,
+        ]);
 
 
         
