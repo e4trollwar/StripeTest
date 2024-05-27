@@ -18,7 +18,7 @@ class paymentController extends Controller
         $header_te =preg_split("/,/",$header_signature);
         $header_te_res = $header_te[1];
         $header_te_res_one =preg_split("/=/",$header_te_res);
-        $header_te_res_final_res = $header_te_res_one[1]
+        $header_te_res_final_res = $header_te_res_one[1];
 
 
         $payload= $request->getContent();
