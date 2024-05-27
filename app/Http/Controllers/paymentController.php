@@ -25,7 +25,7 @@ class paymentController extends Controller
 
         $payload= $request->getContent();
         
-        $computedSignature = hash_hmac('sha256', $header_time_no_equal_res.$header_string_no_equal_res, $payload);
+        $computedSignature = hash_hmac('sha256', $header_time_no_equal_res.$header_string_no_equal_res, $header_signature);
 
 
         $signature = hash_equals($header_time_no_equal_res.$header_string_no_equal_res,$computedSignature);
@@ -40,8 +40,6 @@ class paymentController extends Controller
         }
         
 
-
-       
 
        
     }
