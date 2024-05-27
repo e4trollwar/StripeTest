@@ -35,7 +35,7 @@ class paymentController extends Controller
             ]);
         }else{
             WebhookCall::insert([
-              'payload' =>$header_signature.'SEPARATE'.$computedSignature,
+              'payload' =>$signature,
             ]);
         }
         
