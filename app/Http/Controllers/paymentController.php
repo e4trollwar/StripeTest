@@ -24,7 +24,7 @@ class paymentController extends Controller
             ]);
         }else{
             WebhookCall::insert([
-              'payload' =>$invalid,
+              'payload' =>'invalid',
             ]);
         }
         
