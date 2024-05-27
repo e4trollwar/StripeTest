@@ -16,17 +16,6 @@ class ProcessWebhook extends ProcessWebhookJob
         $dat = json_decode($this->webhookCall, true);
         $data = $dat['payload'];
     
-        if ($data['event'] == 'charge.success') {
-          // take action since the charge was success
-          // Create order
-          // Sed email
-          // Whatever you want
-         }
-          Test::insert([
-                        'test' => 'testingss',
-                ]);
-
-        
 
         //Acknowledge you received the response
         http_response_code(200);

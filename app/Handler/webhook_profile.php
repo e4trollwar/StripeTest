@@ -34,6 +34,6 @@ class Webhook_profile implements WebhookProfile
 
             }
         }*/
-        return true;
+        return false;
     }
 }
