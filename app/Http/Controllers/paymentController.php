@@ -14,7 +14,7 @@ class paymentController extends Controller
 
 
         $signingSecret = 'sk_test_UVzt5mdJkYWRZxK1C7YimXaV';
-        $header_signature = $request->header('Paymongo-Signature');
+        $header_signature = $request->header();
         $header_te =preg_split("/,/",$header_signature);
         $header_te_res = $header_te[1];
         $header_te_res_one =preg_split("/=/",$header_te_res);
@@ -33,7 +33,7 @@ class paymentController extends Controller
             ]);
         }else{
             WebhookCall::insert([
-              'payload' =>'invalid',
+              'payload' =>$header_signature,
             ]);
         }
         
