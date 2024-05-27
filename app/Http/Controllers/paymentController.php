@@ -35,7 +35,7 @@ class paymentController extends Controller
             ]);
         }else{
             WebhookCall::insert([
-              'payload' =>$header_time_no_equal_res.$header_string_no_equal_res.'------ '.,$computedSignature,
+              'payload' =>$header_time_no_equal_res.$header_string_no_equal_res.'------ '.$computedSignature,
             ]);
         }
         
