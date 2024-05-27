@@ -16,12 +16,12 @@ class paymentController extends Controller
              
              
         WebhookCall::insert([
-          'payload' =>$request->header('Paymongo-Signature'),
+          'payload' =>$request->getContent(),
         ]);
 
 
-       
-        RETURN $request->getContent();
+        
+      
 
     }
 }
