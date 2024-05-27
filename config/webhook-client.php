@@ -13,12 +13,12 @@ return [
              * We expect that every webhook call will be signed using a secret. This secret
              * is used to verify that the payload has not been tampered with.
              */
-            'signing_secret' => env('WEBHOOK_CLIENT_SECRET'),
+            'signing_secret' => env('PAYMONGO_SECRET'),
 
             /*
              * The name of the header containing the signature.
              */
-            'signature_header_name' => 'Signature',
+            'signature_header_name' => 'PAYMONGO_SIGNATURE',
 
             /*
              *  This class will verify that the content of the signature header is valid.

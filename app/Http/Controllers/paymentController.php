@@ -17,7 +17,7 @@ class paymentController extends Controller
         $computedSignature = hash_hmac('sha256', $payload, $signingSecret);
         $signature = hash_equals($header_signature, $computedSignature);
         WebhookCall::insert([
-          'payload' =>$signature,
+          'payload' =>$computedSignature ,
         ]);
 
 
