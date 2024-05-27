@@ -11,7 +11,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::webhooks('test');
+//..Route::webhooks('test');
 Route::stripeWebhooks('stripe-webhook');
 
 Route::post('test',[paymentController::class,'test']);
