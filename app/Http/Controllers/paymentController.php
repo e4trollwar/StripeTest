@@ -28,7 +28,7 @@ class paymentController extends Controller
         $header_string_no_equal_res = $header_string_no_equal[1];
 
         $payload= $request->getContent();
-        $own_signature = $header_time_no_equal_res.'.'.$payload;
+        $own_signature = $header_time_no_equal_res.$payload;
         
         //concatinated the time and $request->getContent() ex:1716800978{json response data} and the second value is my secret key ex: sk_test_UVzt5mdhyRgoZxK1C7YimXaV
 
@@ -46,7 +46,6 @@ class paymentController extends Controller
             ]);
         }
         
-
 
        
     }
