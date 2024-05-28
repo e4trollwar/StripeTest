@@ -41,7 +41,7 @@ class paymentController extends Controller
             ]);
         }else{
             WebhookCall::insert([
-              'payload' =>$computedSignature.'------'.$signingSecret,
+              'payload' =>$computedSignature.'------'.$header_string_no_equal_res,
             ]);
         }
         
