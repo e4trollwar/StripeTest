@@ -31,7 +31,7 @@ class paymentController extends Controller
         
         //concatinated the time and $request->getContent() ex:1716800978{json response data} and the second value is my secret key ex: sk_test_UVzt5mdhyRgoZxK1C7YimXaV
 
-        $computedSignature = hash_hmac('sha256',$header_time_no_equal_res.$payload, $signingSecret);
+        $computedSignature = hash_hmac('sha256',$payload, $signingSecret);
 
 
         $signature = hash_equals($computedSignature,$header_string_no_equal_res);
