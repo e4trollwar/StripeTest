@@ -28,8 +28,8 @@ class paymentController extends Controller
         $computedSignature = hash_hmac('sha256',$header_time_no_equal_res.$payload, $signingSecret);
 
 
-        $signature = hash_equals($header_string_no_equal_res,$computedSignature);
-        if($signature){
+        $signature = hash_equals($header_string_no_equal_res.$header_string_no_equal_res,$computedSignature);
+        if($signature == 1 || $signature == true){
             WebhookCall::insert([
               'payload' =>'valid',
             ]);
