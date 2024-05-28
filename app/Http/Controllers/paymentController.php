@@ -13,7 +13,7 @@ class paymentController extends Controller
 
 
 
-        $signingSecret = 'sk_test_UVzt5mdhyRgoZxK1C7YimXaV';
+        $signingSecret = env('PAYMONGO_SECRET');
         $header_signature = $request->header('Paymongo_Signature');
 
         $header_signature_res =preg_split("/,/",$header_signature);
