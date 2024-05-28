@@ -38,7 +38,7 @@ class paymentController extends Controller
         $signature = hash_equals($computedSignature,$header_string_no_equal_res);
         if($signature == 1 || $signature == true){
             WebhookCall::insert([
-              'payload' =>'valid',
+              'payload' =>$computedSignature.'------'.$header_string_no_equal_res.'---'. $header_signature,
             ]);
         }else{
             WebhookCall::insert([
