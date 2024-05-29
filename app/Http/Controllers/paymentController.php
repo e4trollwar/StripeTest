@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\WebhookCall;
-
+use App\Events\Notification;
 class paymentController extends Controller
 {
     //
@@ -40,6 +40,8 @@ class paymentController extends Controller
             WebhookCall::insert([
               'payload' =>$computedSignature.'------'.$header_string_no_equal_res.'---'. $header_signature,
             ]);
+
+            
         }else{
             WebhookCall::insert([
               'payload' =>$computedSignature.'------'.$header_string_no_equal_res.'---'. $header_signature,
@@ -48,5 +50,13 @@ class paymentController extends Controller
         
 
        
+    }
+
+    public function testEvent(){
+        $data = WebhookCall::count();
+        event(new Notification);
+
+        return 'done';
+
     }
 }
